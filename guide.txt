@@ -1,0 +1,38 @@
+# COMPLETED
+"""
+- Create new profile for donator (Name, Age, Occupation, Donation, Random ID)
+- Save profile with OOP
+- Create multiple identifiable profiles (random ID should be for Identification)
+
+"""
+
+
+# Future of this program
+"""
+- Total Donation amount + Number of Donations
+- Get profile by ID (Function)
+- Get profile by name (Function)
+- Edit Profile Details (Function)
+- More interactive session (each input leads you to a function)
+
+# Function to show profile based on id
+def show_profile_by_name(id=None, name=None):
+    for profile in profiles:
+        
+        if id is None and name is None:
+            raise ValueError("At least one of arg1 or arg2 must be provided.")
+    
+        if profile.id.lower() == id.lower() or profile.name.lower() == name.lower():
+            print("Name:", profile.name)
+            print("Age:", profile.age)
+            print("Occupation:", profile.occupation)
+            print("Donation:", profile.donation)
+            print()
+            break
+        else:
+
+
+            return
+    print("Profile not found for the given name.")
+"""
+
