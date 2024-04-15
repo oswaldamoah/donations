@@ -1,7 +1,7 @@
 import random
 
-class Profile:
-    def __init__(self, id, name, age, occupation, donation):
+class Profile: # Constructor
+    def __init__(self, name, age, occupation, donation, id):
         self.name = name
         self.age = age
         self.occupation = occupation
@@ -10,12 +10,35 @@ class Profile:
 
         
 
+# 
 def create_profile():
     name = input("Enter your name: ")
     age = input("Enter your age: ")
-    occupation = input("Enter your occupation: ")        
-    id = f"DON-{random.randint(24001,24100)}" # Unique ID for donation
+    occupation = input("Enter your occupation: ")
+
+    while True: # While loop so that without break (for invalid num input), input can be requested again
+       try:
+            donation = input("Enter donation amount: $")
+            break  # Exit loop on successful conversion
+       except ValueError:
+            print("Invalid donation amount. Please enter a number.")
+
+    id = f"DON-{random.randint(24001, 24100)}"  # Unique ID for donation
     return Profile(name, age, occupation, donation, id)
+
+
+# Calculating total donation amount and number of donations 
+def calculate_totals(profiles):
+    total_donations = 0
+    num_donations = 0
+    for profile in profiles:
+       try:
+            donation_amount = float(profile.donation)
+            total_donations += donation_amount
+       except ValueError:
+            print(f"Ignoring invalid donation amount for profile: {profile.name}")
+       num_donations += 1
+    return total_donations, num_donations
 
 # List for object addresses
 profiles = []
@@ -29,6 +52,10 @@ while True:
     if user_choice == 'n':
         break
 
+total_donations, num_donations = calculate_totals(profiles)
+
+
+# Printing info for individual profiles after exiting data entry loop
 print("Profiles:")
 for profile in profiles: #For an object in the list
     print("Name:", profile.name)
@@ -38,18 +65,23 @@ for profile in profiles: #For an object in the list
     print("Your ID is: ", profile.id)
     print()
 
+# Print total donations and number of donations
+print(f"\nTotal Donation: ${total_donations:.2f}")
+print(f"Number of Donations: {num_donations}")
+
+
 # COMPLETED
 """
 - Create new profile for donator (Name, Age, Occupation, Donation, Random ID)
 - Save profile with OOP
 - Create multiple identifiable profiles (random ID should be for Identification)
+- Total Donation amount + Number of Donations
 
 """
 
 
 # Future of this program
 """
-- Total Donation amount + Number of Donations
 - Get profile by ID (Function)
 - Get profile by name (Function)
 - Edit Profile Details (Function)
