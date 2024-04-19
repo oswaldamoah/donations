@@ -4,6 +4,7 @@
 - Save profile with OOP
 - Create multiple identifiable profiles (random ID should be for Identification)
 - More interactive session (each input leads you to a function)
+- Delete feature
 
 """
 
@@ -11,45 +12,9 @@
 # Future of this program
 """
 - Correct Total Donation amount + Number of Donations
-- Get profile by ID (Function)
 - Get profile by name (Function)
+    Get profile By Name should be able to search for multiple names. It should be able to search for all strings that are the same as the input
 - Edit Profile Details (Function)
 - ReadMe file
 
-
-# Function to show profile based on id
-"""
-def getProfileByID(id):
-    for profile in profiles:
-
-        if profile.id.lower() == id.lower():
-            print("Name:", profile.name)
-            print("Age:", profile.age)
-            print("Occupation:", profile.occupation)
-            print("Donation:", profile.donation)
-            print()
-            break
-        else:
-            print("")
-
-            return print("Profile not found for the given name.")
-        
-def getProfileByName(name):
-    for profile in profiles:
-
-        if profile.name.lower() == name.lower():
-            print("Name:", profile.name)
-            print("Age:", profile.age)
-            print("Occupation:", profile.occupation)
-            print("Donation:", profile.donation)
-            print()
-            break
-        else:
-            print("")
-
-            return print("Profile not found for the given name.")
-        
-        """
-
-"""
 
