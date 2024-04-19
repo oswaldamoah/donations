@@ -13,31 +13,33 @@ profiles = []
 
 def start():
 
-    print("Welcome to the National Cathederal Donations Platform !")
+    print("National Cathederal Donations, Ghana")
     print(f"\t1. Create new profile\n\t2. Display Profile Details\n\t3. Edit Existing profile\n\t4. Delete Profile\n\t5. General Information\n\tx. Exit")
 
     
 
     while True:
         choice1 = input("* Select an option: ")
+        print("")
+
 
         match choice1:
             case '1':
                 def add():
                     new_profile = create_profile()
                     profiles.append(new_profile) # Adds profile object to object list
-
+                add()
                 while True:
-                    add()
+                    print("")
                     user_choice = input("Do you want to add another profile? (y/n): ").lower() # Always be lowercased
-                    match user_choice:
-                        case 'y':
-                            add()
-                            break
-                        case 'n':
-                            break
-                        case _:
-                            "Enter either 'y' or 'n'"
+                    print("")
+                    if user_choice == 'y':
+                        add()
+                    elif user_choice == 'n':
+                        break
+                    else:
+                        print("Enter either 'y' or 'n'")
+
                 # Printing info for individual profiles after exiting data entry loop
                 print("Profiles:")
                 for profile in profiles: #For an object in the list
@@ -46,21 +48,24 @@ def start():
                     print("Occupation:", profile.occupation)
                     print("Donation: $",profile.donation)
                     print("Your ID is: ", profile.id)
-                    print()
+                    print("")
                 start()
-                    
-                break   
             case '2':
                 profile_details()
+                start()
                 break
             case '3':
                 edit_profile()
+                start()
                 break
             case '4':
+                id = input("Enter ID of profile you want to delete: ")
                 delete_profile()
+                start()
                 break
             case '5':
                 general_info()
+                start()
                 break
             case 'x':
                 print("Exiting the platform...")
@@ -78,8 +83,8 @@ def create_profile():
 
     while True: # While loop so that without break (for invalid num input), input can be requested again
        try:
-            donation = input("Enter donation amount: $")
-            break  # Exit loop on successful conversion
+            donation = float(input("Enter donation amount: $"))
+            break  # Exit loop on successful conversion to float
        except ValueError:
             print("Invalid donation amount. Please enter a number.")
 
@@ -119,13 +124,15 @@ def profile_details():
 
     while True:
         choice1 = input("* Select an option: ")
-
+#
         match choice1:
             case '1':
-                getProfileByID()
+                id = input("Enter your ID: ")
+                getProfileByID(id)
                 break  
             case '2':
-                getProfileByName()
+                name = input("Enter your name: ")
+                getProfileByName(name)
                 break
             case '0':
                 start()
@@ -139,14 +146,22 @@ def profile_details():
 
 
 def edit_profile():
-    #Incomplete
+    # Implement editing functionality here
     print("Incomplete")
 
 
 
 def delete_profile():
-    #Incomplete
-    print("Incomplete")
+
+    found_profile = None
+    for profile in profiles:
+        if profile.id.lower() == id.lower():
+            found_profile = profile
+            break  # Exit the loop after finding a match
+
+    if found_profile:
+        profiles.remove(found_profile)
+        print("{found_profile.name} has been deleted")
 
 
 def general_info():
@@ -158,13 +173,37 @@ def general_info():
 
 """Functions: SET 2"""
 
-def getProfileByID():
-    #Incomplete
-    print("Incomplete")
+def getProfileByID(id):
+    found_profile = None
+    for profile in profiles:
+        if profile.id.lower() == id.lower():
+            found_profile = profile
+            break  # Exit the loop after finding a match
 
-def getProfileByName():
-    #Incomplete
-    print("Incomplete")
+    if found_profile:
+        print("Name:", found_profile.name)
+        print("Age:", found_profile.age)
+        print("Occupation:", found_profile.occupation)
+        print("Donation: ", found_profile.donation,"USD")
+        print("")
+    else:
+        print("Profile Not Found")
+
+def getProfileByName(name):
+    found_profile = None
+    for profile in profiles:
+        if profile.name.lower() == name.lower():
+            found_profile = profile
+            break  # Exit the loop after finding a match
+
+    if found_profile:
+        print("Name:", found_profile.name)
+        print("Age:", found_profile.age)
+        print("Occupation:", found_profile.occupation)
+        print("Donation:", found_profile.donation,"USD")
+        print("")
+    else:
+        print("Profile Not Found")
 
 
 
@@ -193,6 +232,7 @@ start()
 - Get profile by ID (Function)
 - Get profile by name (Function)
 - Edit Profile Details (Function)
+- ReadMe file
 
 # Function to show profile based on id
 

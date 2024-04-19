@@ -14,6 +14,7 @@
 - Get profile by ID (Function)
 - Get profile by name (Function)
 - Edit Profile Details (Function)
+- ReadMe file
 
 
 # Function to show profile based on id

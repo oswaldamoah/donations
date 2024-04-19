@@ -1,0 +1,9 @@
+Loop for adding profile only runs twice (FIXED)
+Donation Try block faulty (FIXED)
+Find profile by ID & Name doesnt work (FIXED)
+Get profile By Name should be able to search for multiple names. It should be able to search for all strings that are the same as the input
+Instead of start after every case, create a function for [Home: 0] and when you enter 0, it runs start. if you enter anything apart from 0, yawa.
+Total Donation & Total Number of Donations doesn't work
+Profile Deletion Doesn't work
+Profile Editing Doesn't work 
+
