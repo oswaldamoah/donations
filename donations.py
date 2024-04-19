@@ -8,15 +8,14 @@ class Profile: # Constructor
         self.donation = donation
         self.id = id
 
-profiles = []
+profiles = [] # List of profile objects
 
 
 def start():
 
-    print("National Cathederal Donations, Ghana")
+    print("National Cathederal Donations, Ghana") # Header
     print(f"\t1. Create new profile\n\t2. Display Profile Details\n\t3. Edit Existing profile\n\t4. Delete Profile\n\t5. General Information\n\tx. Exit")
-
-    
+    # Multiple choice prompt
 
     while True:
         choice1 = input("* Select an option: ")
@@ -49,23 +48,25 @@ def start():
                     print("Donation: $",profile.donation)
                     print("Your ID is: ", profile.id)
                     print("")
-                start()
+
+                goHome() # Allows to easily go home or exit after each fxn
+                break
             case '2':
                 profile_details()
-                start()
+                goHome()
                 break
             case '3':
                 edit_profile()
-                start()
+                goHome()
                 break
             case '4':
                 id = input("Enter ID of profile you want to delete: ")
-                delete_profile()
-                start()
+                delete_profile(id)
+                goHome()
                 break
             case '5':
                 general_info()
-                start()
+                goHome()
                 break
             case 'x':
                 print("Exiting the platform...")
@@ -116,8 +117,6 @@ total_num = result[1]
 
 
 
-
-
 def profile_details():
     #Incomplete
     print(f"\t1. Get profile deatils by ID\n\t2. Get profile details by name\n\t0. Back\n\tX. Exit")
@@ -142,6 +141,7 @@ def profile_details():
                 break  
             case _:
                 print("Invalid choice. Please enter a number from '0-2' or x ")
+                
 
 
 
@@ -151,7 +151,7 @@ def edit_profile():
 
 
 
-def delete_profile():
+def delete_profile(id):
 
     found_profile = None
     for profile in profiles:
@@ -161,7 +161,7 @@ def delete_profile():
 
     if found_profile:
         profiles.remove(found_profile)
-        print("{found_profile.name} has been deleted")
+        print(f"{found_profile.name}'s profile has been deleted")
 
 
 def general_info():
@@ -181,6 +181,7 @@ def getProfileByID(id):
             break  # Exit the loop after finding a match
 
     if found_profile:
+        print("")
         print("Name:", found_profile.name)
         print("Age:", found_profile.age)
         print("Occupation:", found_profile.occupation)
@@ -197,6 +198,7 @@ def getProfileByName(name):
             break  # Exit the loop after finding a match
 
     if found_profile:
+        print("")
         print("Name:", found_profile.name)
         print("Age:", found_profile.age)
         print("Occupation:", found_profile.occupation)
@@ -204,6 +206,26 @@ def getProfileByName(name):
         print("")
     else:
         print("Profile Not Found")
+
+def goHome():
+    print("")
+    
+    while True:
+        decision = input("Homepage-'0' | Exit-'x' : ")
+
+        match decision:
+            case '0':
+                start()
+                break
+            case 'x':
+                break
+            case _:
+                print("Enter either '0 - Home' or 'x - Exit'")
+            
+
+
+    
+
 
 
 
