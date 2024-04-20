@@ -56,7 +56,8 @@ def start():
                 goHome()
                 break
             case '3':
-                edit_profile()
+                id = input("Enter ID of profile you want to edit: ")
+                edit_profile(id)
                 goHome()
                 break
             case '4':
@@ -122,9 +123,9 @@ def profile_details():
     print(f"\t1. Get profile deatils by ID\n\t2. Get profile details by name\n\t0. Back\n\tX. Exit")
 
     while True:
-        choice1 = input("* Select an option: ")
+        choice2 = input("* Select an option: ")
 #
-        match choice1:
+        match choice2:
             case '1':
                 id = input("Enter your ID: ")
                 getProfileByID(id)
@@ -145,10 +146,83 @@ def profile_details():
 
 
 
-def edit_profile():
-    # Implement editing functionality here
-    print("Incomplete")
+def edit_profile(id):
+    found_profile = None
+    for profile in profiles:
+        if profile.id.lower() == id.lower():
+            found_profile = profile
+            break  # Exit the loop after finding a match
+    if found_profile:
+        print(f"Edit: \n\t1. Name\n\t2. Age\n\t3. Occupation\n\t4. Donation\n\t0. Back\n\tX. Exit")
+    
+    # Fxns that edit naem, age, etc.
+    # They are in the edit profile fxn so that they can access 'found_profile' 
+    def edit_name(e_name):
+        found_profile.name = e_name
 
+    def edit_age(e_age):
+        found_profile.age = e_age
+
+    def edit_occupation(e_occupation):
+        found_profile.occupation = e_occupation
+
+    def edit_donation(e_donation):
+        found_profile.donation = e_donation
+
+
+    while True:
+        choice1 = input("* Select an option: ") # For earlier Multiple Choice prompt
+        print("")
+        
+#
+        match choice1:
+            case '1':
+                # Edit name
+                print(f"Current name: {found_profile.name} for ID({found_profile.id})")
+                e_name = input("Enter new name: ")
+                edit_name(e_name) # changes value of name
+                print(f"Name for ID({found_profile.id}) has been changed to {found_profile.name}")
+                break  
+            case '2':
+                # Edit age
+                print(f"Current age: {found_profile.age} years for ID({found_profile.id})")
+                e_age = input("Enter new age: ")
+                edit_age(e_age) # changes value of age
+                print(f"Age value for ID({found_profile.id}) has been changed to {found_profile.age} years")
+                break
+            case '3':
+                # Edit occupation
+                print(f"Current occupation: {found_profile.occupation} for ID({found_profile.id})")
+                e_occupation = input("Enter your occupation: ")
+                edit_occupation(e_occupation) # changes value of occupation
+                print(f"Occupation for ID({found_profile.id}) has been changed to {found_profile.occupation}")
+                break  
+            case '4':
+                # Edit donation
+                print(f"Current donation: ${found_profile.donation} for ID({found_profile.id})")
+                try:
+                    e_donation = float(input("Enter your donation value: $")) # changes value of donation when input is a float/number
+                except ValueError:
+                    print("Invalid donation amount. Please enter a number.")
+                edit_donation(e_donation)
+                print(f"Donation value for ID({found_profile.id}) has been changed to ${found_profile.donation}")
+                break
+            case '0':
+                start()
+                break
+            case 'x':
+                print("Exiting the platform...")
+                break  
+            case _:
+                print("Invalid choice. Please enter a number from '0-4' or x ")
+
+
+
+
+
+
+
+    
 
 
 def delete_profile(id):
@@ -162,6 +236,8 @@ def delete_profile(id):
     if found_profile:
         profiles.remove(found_profile)
         print(f"{found_profile.name}'s profile has been deleted")
+    else:
+        print(f"No profile with id {id} was found")
 
 
 def general_info():
@@ -215,6 +291,7 @@ def goHome():
     
     while True:
         decision = input("Homepage-'0' | Exit-'x' : ")
+        print("")
 
         match decision:
             case '0':
@@ -225,6 +302,9 @@ def goHome():
             case _:
                 print("Enter either '0 - Home' or 'x - Exit'")
             
+
+
+"""Functions: SET 2"""
 
 
     
