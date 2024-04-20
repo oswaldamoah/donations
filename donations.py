@@ -174,6 +174,7 @@ def general_info():
 """Functions: SET 2"""
 
 def getProfileByID(id):
+    # each object has a unique ID, so when ID is inputted, the program searches for just one object
     found_profile = None
     for profile in profiles:
         if profile.id.lower() == id.lower():
@@ -191,21 +192,23 @@ def getProfileByID(id):
         print("Profile Not Found")
 
 def getProfileByName(name):
-    found_profile = None
-    for profile in profiles:
-        if profile.name.lower() == name.lower():
-            found_profile = profile
-            break  # Exit the loop after finding a match
+    # searches for all strings matching the input, puts their corresponding objects in a list and prints their properties 
+    found_profiles = [] 
+    for profile in profiles: 
+        if name.lower() in profile.name.lower():  # Search for substring (case-insensitive)
+         found_profiles.append(profile) # adds to 
 
-    if found_profile:
-        print("")
-        print("Name:", found_profile.name)
-        print("Age:", found_profile.age)
-        print("Occupation:", found_profile.occupation)
-        print("Donation:", found_profile.donation,"USD")
-        print("")
+    if found_profiles:
+        print("Profiles matching the search:")
+        for profile in found_profiles:
+            print("")
+            print("Name:", profile.name)
+            print("Age:", profile.age)
+            print("Occupation:", profile.occupation)
+            print("Donation:", profile.donation, "USD")
+            print("")
     else:
-        print("Profile Not Found")
+        print("No profiles found matching the search")
 
 def goHome():
     print("")
