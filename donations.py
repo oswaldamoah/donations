@@ -77,6 +77,7 @@ def start():
 
         
 
+
 """Functions: SET 1"""
 def create_profile():
     name = input("Enter your name: ")
@@ -94,6 +95,8 @@ def create_profile():
 
     
     return Profile(name, age, occupation, donation, id)
+
+
 
 def calculate_totals(profiles):
     total_donations = 0
@@ -221,10 +224,6 @@ def edit_profile(id):
 
 
 
-
-    
-
-
 def delete_profile(id):
 
     found_profile = None
@@ -243,6 +242,7 @@ def delete_profile(id):
 def general_info():
     print(f"\nTotal Donation: ${total_donations:.2f}")
     print(f"Number of Donations: {total_num}")  
+
 
 
 
@@ -266,6 +266,8 @@ def getProfileByID(id):
         print("")
     else:
         print("Profile Not Found")
+
+
 
 def getProfileByName(name):
     # searches for all strings matching the input, puts their corresponding objects in a list and prints their properties 
@@ -326,6 +328,9 @@ start()
 - Save profile with OOP
 - Create multiple identifiable profiles (random ID should be for Identification)
 - More interactive session (each input leads you to a function)
+- Get profile by ID (Function)
+- Get profile by name (Function)
+- Edit Profile Details (Function)
 
 
 """
@@ -334,9 +339,6 @@ start()
 # Future of this program
 """
 - Correct Total Donation amount + Number of Donations
-- Get profile by ID (Function)
-- Get profile by name (Function)
-- Edit Profile Details (Function)
 - ReadMe file
 
 # Function to show profile based on id

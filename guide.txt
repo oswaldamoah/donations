@@ -5,6 +5,9 @@
 - Create multiple identifiable profiles (random ID should be for Identification)
 - More interactive session (each input leads you to a function)
 - Delete feature
+- Get profile by name (Function)
+    Get profile By Name should be able to search for multiple names. It should be able to search for all strings that are the same as the input
+- Edit Profile Details (Function)
 
 """
 
@@ -12,9 +15,6 @@
 # Future of this program
 """
 - Correct Total Donation amount + Number of Donations
-- Get profile by name (Function)
-    Get profile By Name should be able to search for multiple names. It should be able to search for all strings that are the same as the input
-- Edit Profile Details (Function)
 - ReadMe file
 
 
