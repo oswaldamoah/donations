@@ -13,7 +13,7 @@ profiles = [] # List of profile objects
 
 def start():
 
-    print("National Cathederal Donations, Ghana") # Header
+    print("CleanEarth™ Ghana | Donations Platform") # Header
     print(f"\t1. Create new profile\n\t2. Display Profile Details\n\t3. Edit Existing profile\n\t4. Delete Profile\n\t5. General Information\n\tx. Exit")
     # Multiple choice prompt
 
@@ -96,26 +96,6 @@ def create_profile():
     
     return Profile(name, age, occupation, donation, id)
 
-
-
-def calculate_totals(profiles):
-    total_donations = 0
-    num_donations = 0
-    for profile in profiles:
-       try:
-            donation_amount = float(profile.donation)
-            total_donations += donation_amount
-       except ValueError:
-            print(f"Ignoring invalid donation amount for profile: {profile.name}")
-       num_donations += 1
-    return total_donations, num_donations
-
-
-
-# Stores return values in their respective variables 
-result = calculate_totals(profiles)
-total_donations = result[0]
-total_num = result[1]
 
 
 
@@ -240,8 +220,16 @@ def delete_profile(id):
 
 
 def general_info():
-    print(f"\nTotal Donation: ${total_donations:.2f}")
-    print(f"Number of Donations: {total_num}")  
+    total_donation = 0
+    num_donors = 0
+    for profile in profiles:
+        total_donation += profile.donation
+        if profile.donation > 0:  # Check if donation is greater than 0 (they donated)
+            num_donors += 1
+
+    print("General Donation Information:")
+    print(f"Total amount of Donations: ${total_donation:.2f}")  # Format to 2 decimal places
+    print(f"Total no. of donors: {num_donors}")
 
 
 
@@ -306,15 +294,6 @@ def goHome():
             
 
 
-"""Functions: SET 2"""
-
-
-    
-
-
-
-
-
 start()
 
 
@@ -331,17 +310,9 @@ start()
 - Get profile by ID (Function)
 - Get profile by name (Function)
 - Edit Profile Details (Function)
-
-
-"""
-
-
-# Future of this program
-"""
 - Correct Total Donation amount + Number of Donations
+
+
 - ReadMe file
-
-# Function to show profile based on id
-
 """
 
