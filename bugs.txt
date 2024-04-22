@@ -1,8 +1,0 @@
-Loop for adding profile only runs twice (FIXED)
-Donation Try block faulty (FIXED)
-Find profile by ID & Name doesnt work (FIXED)
-Profile Deletion Doesn't work (FIXED)
-Get profile By Name should be able to search for multiple names. It should be able to search for all strings that are the same as the input (FIXED)
-Profile Editing Doesn't work (FIXED)
-Total Donation & Total Number of Donations doesn't work
-
