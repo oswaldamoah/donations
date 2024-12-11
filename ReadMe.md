@@ -1,6 +1,6 @@
 # Donation Program
 
-This Python program allows you to manage donor profiles for the CleanEarth Ghana. It provides functionalities to create new profiles, view existing profiles, edit profile details, delete profiles, and view general donation information.
+This Python program is mainly focused on Object-Oriented-Programming. The program allows the user to manage donor profiles for the CleanEarth Ghana. It provides functionalities to create new profiles, view existing profiles, edit profile details, delete profiles, and view general donation information.
 
 ## Features:
 
